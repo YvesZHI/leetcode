@@ -5,6 +5,7 @@
 Description: https://leetcode.com/problems/two-sum/
 
 Solution:
+```
 int[] twoSum(int[] nums, int target)
     hashmap hm    // key: element of nums; value: index of element of nums
     for each n in nums
@@ -16,3 +17,4 @@ int[] twoSum(int[] nums, int target)
     end
     return []
 end
+```
