@@ -18,18 +18,17 @@ int Prime(int n)
     primes[primeCnt++] = 3;
 
     for (int i = 5; i < n + 1;) {
-        if (isPrime[i])
-        {
+        if (isPrime[i]) {
             primes[primeCnt++] = i;
-            if (sw && isPrime[i - 2])
-            {
+            if (sw && isPrime[i - 2]) {
                 counter++;
             }
         }
         for (int j = 0; j < primeCnt; ++j) {
             tmp = primes[j] * i;
-            if (tmp >= n + 1)
+            if (tmp >= n + 1) {
                 break;
+            }
             if (tmp % 6 == 5 || tmp % 6 == 1) {
                 isPrime[tmp] = false;
                 if (!(i % primes[j])) {
@@ -38,13 +37,10 @@ int Prime(int n)
             }
         }
 
-        if (!sw)
-        {
+        if (!sw) {
             i += 2;
             sw = true;
-        }
-        else
-        {
+        } else {
             i += 4;
             sw = false;
         }
@@ -59,18 +55,13 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    while (cin >> n)
-    {
-        if (n < 5)
-        {
+    while (cin >> n) {
+        if (n < 5) {
             cout << 0 << endl;
         }
-        else if (n < 7)
-        {
+        else if (n < 7) {
             cout << 1 << endl;
-        }
-        else
-        {
+        } else {
             cout << Prime(n) << endl;
         }
     }
