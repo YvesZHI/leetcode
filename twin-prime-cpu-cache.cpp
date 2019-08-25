@@ -1,27 +1,32 @@
-#include <iostream>
-#include <cmath>
-#include <vector>
 #include <chrono>
-
+#include <cmath>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-int Prime(int n)
-{
-    vector<bool> isPrime(n + 1, true);
+constexpr int CPU_CACHE = 32768;
+
+int Prime(int n) {
+    int a = (n + 1) / CPU_CACHE;
+    if ((n + 1) % CPU_CACHE != 0) {
+        a++;
+    }
+    // vector<bool> isPrime(n + 1, true);
+    vector<vector<bool>> isPrime(a, vector<bool>(CPU_CACHE, true));
     uint16_t *primes = new uint16_t[n / (int)(log10(n) + 0.5)](); // 100000000
     int counter = 1;
     int primeCnt = 0;
     bool sw = false;
     int tmp;
-    isPrime[0] = isPrime[1] = isPrime[4] = false;
+    isPrime[0][0] = isPrime[0][1] = isPrime[0][4] = false;
     primes[primeCnt++] = 2;
     primes[primeCnt++] = 3;
 
     for (int i = 5; i < n + 1;) {
-        if (isPrime[i]) {
+        if (isPrime[i / CPU_CACHE][i % CPU_CACHE]) {
             primes[primeCnt++] = i;
-            if (sw && isPrime[i - 2]) {
+            if (sw && isPrime[(i - 2) / CPU_CACHE][(i - 2) % CPU_CACHE]) {
                 counter++;
             }
         }
@@ -31,7 +36,7 @@ int Prime(int n)
                 break;
             }
             if (tmp % 6 == 5 || tmp % 6 == 1) {
-                isPrime[tmp] = false;
+                isPrime[tmp / CPU_CACHE][tmp % CPU_CACHE] = false;
                 if (!(i % primes[j])) {
                     break;
                 }
@@ -50,11 +55,11 @@ int Prime(int n)
     return counter;
 }
 
-int main()
-{
+int main() {
     int n;
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
+
 
     while (cin >> n) {
         auto start = std::chrono::system_clock::now();
