@@ -25,4 +25,6 @@ Algorithm:<br>
 Number of primes: https://en.wikipedia.org/wiki/Prime_number#Number_of_primes_below_a_given_bound<br>
 Euler's sieve: https://www.jianshu.com/p/2031036dba4b<br>
 Prime 6k rule: https://primes.utm.edu/notes/faq/six.html<br>
-CPU cache: https://github.com/kimwalisch/primesieve/wiki/Segmented-sieve-of-Eratosthenes
+CPU cache: https://github.com/kimwalisch/primesieve/wiki/Segmented-sieve-of-Eratosthenes<br>
+PI(n): https://www.dcode.fr/prime-number-pi-count<br>
+list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
