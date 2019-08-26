@@ -49,8 +49,7 @@ uint32_t segmented_sieve(uint32_t limit) {
         }
 
         for (; n <= high; n += 2) {
-            if (!sieve[n - low])
-            {
+            if (!sieve[n - low]) {
                 if (tmp == 0) {
                     tmp = n;
                 } else {
